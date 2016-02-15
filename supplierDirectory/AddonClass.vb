@@ -64,6 +64,7 @@ Namespace Contensive.Addons.SupplierDirectory
             Dim searchAdvanced As Boolean = False
             Dim mapMode = False
             Dim orgId As Integer = 0
+            Dim js As String = ""
             '
             Execute = ""
             Try
@@ -500,7 +501,6 @@ Namespace Contensive.Addons.SupplierDirectory
                 ' footer Navigation
                 ' --------------------------------------------------------------------
                 '
-                copy = "&nbsp;"
                 If CP.User.IsAuthenticated() Then
                     cs = CP.CSNew
                     If cs.Open("organizations", "directoryaccountcontactid=" & CP.Db.EncodeSQLNumber(CP.User.Id)) Then
@@ -518,12 +518,19 @@ Namespace Contensive.Addons.SupplierDirectory
                     End If
                     Call cs.Close()
                 End If
-                content = content.Replace("##footerNavContent##", copy)
+                If copy = "" Then
+                    js &= "jQuery('#footerNavContent').hide();"
+                Else
+                    content = content.Replace("##footerNavContent##", copy)
+                End If
                 '
                 ' --------------------------------------------------------------------
                 ' Done
                 ' --------------------------------------------------------------------
                 '
+                If Not String.IsNullOrEmpty(js) Then
+                    CP.Doc.AddHeadJavascript(js)
+                End If
                 Execute = content
             Catch ex As Exception
                 Call CP.Site.ErrorReport("Execute ex.message=" & ex.Message)

@@ -109,8 +109,8 @@ Namespace Contensive.Addons.SupplierDirectory
 
                         'sql = "select o.*,h.name as headingName,h.category as categoryName" _
                         '    & " from ((organizations o " _
-                        '    & " left join organizationheadingrules r on r.organizationid=o.id)" _
-                        '    & " left join tempHeadings h on r.headingid=h.id)" _
+                        '    & " left join OrganizationSubcategoryRules r on r.organizationid=o.id)" _
+                        '    & " left join directorySubcategories h on r.headingid=h.id)" _
                         '    & " where (o.id=" & organizationID & ")" _
                         '    & " and ((r.approved<>0)or(r.id is null))" _
                         '    & " order by h.category,h.name"
@@ -290,7 +290,7 @@ Namespace Contensive.Addons.SupplierDirectory
                             categoryList = ""
                             csHeadings = cp.CSNew
                             sql = "select h.category as categoryname,h.name as headingName,h.id as headingId" _
-                                & " from tempHeadings h left join OrganizationHeadingRules r on r.headingid=h.id" _
+                                & " from directorySubcategories h left join OrganizationSubcategoryRules r on r.headingid=h.id" _
                                 & " where r.organizationid=" & organizationID _
                                 & " and (r.approved<>0)" _
                                 & " order by h.category, h.name"

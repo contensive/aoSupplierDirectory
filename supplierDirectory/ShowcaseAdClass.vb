@@ -273,7 +273,7 @@ Namespace Contensive.Addons.SupplierDirectory
                             categoryList = ""
                             csHeadings = cp.CSNew
                             sql = "select h.category as categoryname,h.name as headingName,h.id as headingId" _
-                                & " from tempHeadings h left join OrganizationHeadingRules r on r.headingid=h.id" _
+                                & " from directorySubcategories h left join OrganizationSubcategoryRules r on r.headingid=h.id" _
                                 & " where r.organizationid=" & organizationID _
                                 & " and (r.approved<>0)" _
                                 & " order by h.category, h.name"
@@ -310,7 +310,7 @@ Namespace Contensive.Addons.SupplierDirectory
                             'categoryList = ""
                             'csHeadings = cp.CSNew
                             'sql = "select h.category as categoryname,h.name as headingName" _
-                            '    & " from tempHeadings h left join OrganizationHeadingRules r on r.headingid=h.id" _
+                            '    & " from directorySubcategories h left join OrganizationSubcategoryRules r on r.headingid=h.id" _
                             '    & " where r.organizationid=" & organizationID _
                             '    & " and (r.approved<>0)" _
                             '    & " order by h.category, h.name"

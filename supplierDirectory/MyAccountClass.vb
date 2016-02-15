@@ -171,8 +171,8 @@ Namespace Contensive.Addons.SupplierDirectory
                     '
                     subcategorylist = ""
                     sql = "select h.id, h.category, h.name as subcategoryName, p.name as placementName" _
-                        & " from (( organizationheadingrules r" _
-                        & " left join tempheadings h on r.headingid=h.id )" _
+                        & " from (( OrganizationSubcategoryRules r" _
+                        & " left join directorySubcategories h on r.headingid=h.id )" _
                         & " left join directoryplacements p on r.placementid=p.id )" _
                         & " where(r.organizationid=" & orgId & ")" _
                         & " order by h.category, h.name, p.name desc"

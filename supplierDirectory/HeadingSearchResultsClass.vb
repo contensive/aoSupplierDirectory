@@ -173,7 +173,7 @@ Namespace Contensive.Addons.SupplierDirectory
                                 & " and (r.approved<>0)" _
                                 & " and (o.includeInDirectory=1)"
                             sql = "select count(*) as cnt" _
-                                & " from organizations o left join organizationheadingrules r on r.organizationid=o.id" _
+                                & " from organizations o left join OrganizationSubcategoryRules r on r.organizationid=o.id" _
                                 & " where " & sqlCriteria
                             Call cs.OpenSQL("", sql)
                             If cs.OK Then
@@ -201,14 +201,14 @@ Namespace Contensive.Addons.SupplierDirectory
                                 exhibitorLink = cp.Site.GetProperty("Supplier Directory Exhibitor Link", "/")
                                 showcaseCaption = cp.Site.GetProperty("Supplier Directory Showcase Caption", "Product Showcase")
                                 sql = "select o.*" _
-                                    & " from (( organizationheadingrules r" _
+                                    & " from (( OrganizationSubcategoryRules r" _
                                     & " left join organizations o on r.organizationid=o.id )" _
                                     & " left join directoryplacements s on r.placementid=s.id )" _
                                     & " where " & sqlCriteria _
                                     & " order by s.priority desc,( o.directoryIsEnhancedListing * o.directoryprofileApprovedByAccount ) desc, o.directoryname"
                                 'sql = "select o.*" _
                                 '    & " from (((organizations o " _
-                                '    & " left join organizationheadingrules r on r.organizationid=o.id)" _
+                                '    & " left join OrganizationSubcategoryRules r on r.organizationid=o.id)" _
                                 '    & " left join (select * from directoryheadingplacement where headingid=" & headingID & ") p on p.organizationid=o.id)" _
                                 '    & " left join directoryplacements s on p.placementid=s.id)" _
                                 '    & " where(r.headingid = " & headingID & ")" _
