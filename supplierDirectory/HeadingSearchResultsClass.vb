@@ -110,7 +110,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     ' attempt cache read
                     '
                     cacheName = "Supplier Directory Subcategory Search Results, " & headingID & "-" & pageNumber & "-" & pageSize
-                    getForm = cp.Cache.Read(cacheName)
+                    getForm = common.cacheRead(cp, cacheName)
                     If getForm = "" Then
                         '
                         ' no cache, verify heading
@@ -236,8 +236,8 @@ Namespace Contensive.Addons.SupplierDirectory
                                     If weblink = "" Then
                                         weblink = web
                                     End If
-                                    If (web <> "") Then
-                                        If weblink.Substring(0, 4).ToLower <> "http" Then
+                                    If (weblink <> "") Then
+                                            If weblink.IndexOf("://") < 0 Then
                                             weblink = "http://" & weblink
                                         End If
                                     End If

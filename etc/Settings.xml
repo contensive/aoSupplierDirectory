@@ -1,0 +1,24 @@
+<form>
+	<Description>Settings that affect the Supplier Directory</Description>
+	<HelpLink>http://wiki.kmacloud.net/index.php?title=Supplier_Directory</HelpLink>
+		<tab name="Listings" description="Settings that affect how directory listings appear.">
+			<siteproperty name="Supplier Directory Location" caption="Supplier Directory Page" ReadOnly="0" Type="integer" Selector="listid(page content)" Description=""></siteproperty>
+			<siteproperty name="Supplier Directory Vanity URL Prefix" caption="Vanity URL Prefix" ReadOnly="0" Type="text" Selector="" Description="The Supplier Directory automatically creates vanity URLs (link alias) entries for each diredtory listing using the organization name. If you want those URLs prefixed, enter the prefix here. For instance, if you want the URL for ACME to read /Directory/ACME, enter the prefix /Directory/ here.">/</siteproperty>
+			<siteproperty name="SUPPLIER DIRECTORY MEMBER LINK" caption="Member Link" ReadOnly="0" Type="Text" Selector="" Description="">/</siteproperty>
+			<siteproperty name="SUPPLIER DIRECTORY MEMBER COMPANY CAPTION" caption="Company Caption" ReadOnly="0" Type="Text" Selector="" Description="">Member Company</siteproperty>
+			<siteproperty name="SUPPLIER DIRECTORY MEMBER COMPANY LINK" caption="Company Caption Link" ReadOnly="0" Type="Text" Selector="" Description="">/</siteproperty>
+			<siteproperty name="SUPPLIER DIRECTORY SHOWCASE CAPTION" caption="Showcase Caption" ReadOnly="0" Type="Text" Selector="" Description="">Product Showcase</siteproperty>
+		</tab>
+		<tab name="Exhibitors" description="Settings that affect how exhibitor listings appear.">
+			<siteproperty name="SUPPLIER DIRECTORY EXHIBITOR CAPTION" caption="Exhibitor Caption" ReadOnly="0" Type="Text" Selector="" Description="">Exhibitor</siteproperty>
+			<siteproperty name="SUPPLIER DIRECTORY EXHIBITOR LINK" caption="Exhibitor Caption Link" ReadOnly="0" Type="Text" Selector="" Description="">/</siteproperty>
+		</tab>
+		<tab name="Test"  description="Test settings.">
+			<siteproperty name="SUPPLIER DIRECTORY TEST MODE" type="boolean" caption="Test Mode" ReadOnly="0" Selector="" Description="">true</siteproperty>
+			<siteproperty name="SUPPLIER DIRECTORY TEST EMAIL ADDRESS" caption="Test Mode Email Address" ReadOnly="0" Type="Text" Selector="" Description="">support@contensive.com</siteproperty>
+		</tab>
+		<tab name="Housekeep"  description="Settings related to the overnight housekeep activities.">
+			<SiteProperty caption="Housekeep Start Time" name="supplierDirHousekeepStartTime" ReadOnly="0" Type="integer" Selector="[Midnight:0|1 am:1|2 am:2|3 am:3|4 am:4|5 am:5|6 am:6|7 am:7|8 am:8|9 am:9|10 am:10|11 am:11|Noon:12|1 pm:13|2 pm:14|3 pm:15|4 pm:16|5 pm:17|6 pm:18|7 pm:19|8 pm:20|9 pm:21|10 pm:22|11 pm:23|]" Description="The housekeep process will be started during this hour period." editorAddon="">2</SiteProperty>
+			<siteproperty name="supplierDirHousekeepLastExecution" caption="Last Housekeep" ReadOnly="1" Type="Text" Selector="" Description=""></siteproperty>
+		</tab>
+</form>

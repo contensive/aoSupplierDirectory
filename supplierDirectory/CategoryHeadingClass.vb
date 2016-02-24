@@ -33,7 +33,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 category = cp.Request.GetText(rnCategory)
                 If category <> "" Then
                     cacheName = "Supplier Directory Subcategory List, " & category
-                    getForm = cp.Cache.Read(cacheName)
+                    getForm = common.cacheRead(cp, cacheName)
                     If getForm = "" Then
                         cs = cp.CSNew
                         cs.Open("Directory Subcategories", "(category=" & cp.Db.EncodeSQLText(category) & ")", "name")

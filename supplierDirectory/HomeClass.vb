@@ -28,7 +28,7 @@ Namespace Contensive.Addons.SupplierDirectory
             getForm = ""
             Try
                 cacheName = "Supplier Directory Home"
-                getForm = cp.Cache.Read(cacheName)
+                getForm = common.cacheRead(cp, cacheName)
                 If getForm = "" Then
                     rqs = cp.Doc.RefreshQueryString
                     cs = cp.CSNew
@@ -199,7 +199,7 @@ Namespace Contensive.Addons.SupplierDirectory
             getShowcaseAds = ""
             Try
                 cacheName = "ShowcaseAdList"
-                ShowcaseAdList = cp.Cache.Read(cacheName)
+                ShowcaseAdList = common.cacheRead(cp, cacheName)
                 If ShowcaseAdList = "" Then
                     cs = cp.CSNew
                     cs.Open("Directory Showcase Ads", "(approved<>0)and(ApprovedByAccount<>0)")

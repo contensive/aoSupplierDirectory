@@ -94,7 +94,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     ' attempt cache read
                     '
                     cacheName = "Supplier Directory Showcase Ad, " & showcaseAdID
-                    getForm = cp.Cache.Read(cacheName)
+                    getForm = common.cacheRead(cp, cacheName)
                     If getForm = "" Then
                         '
                         ' build form

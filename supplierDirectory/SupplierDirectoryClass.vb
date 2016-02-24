@@ -4,7 +4,7 @@ Imports Contensive.Addons.SupplierDirectory.Constants
 '
 Namespace Contensive.Addons.SupplierDirectory
 
-    Public Class AddonClass
+    Public Class SupplierDirectoryClass
         Inherits AddonBaseClass
         '
         Dim Global_HorizontalBannerList As String = ""
@@ -337,7 +337,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     Randomize()
                     bannerTop = ""
                     bannerBottom = ""
-                    bannerList = getHorizontalBannerList(CP)
+                    bannerList = getHorizontalBannerList(CP, common)
                     If bannerList <> "" Then
                         banners = bannerList.Split(vbCrLf)
                         bannerCnt = banners.Length
@@ -405,7 +405,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     '
                     bannerTop = ""
                     bannerBottom = ""
-                    bannerList = getVerticalBannerList(CP)
+                    bannerList = getVerticalBannerList(CP, common)
                     If bannerList <> "" Then
                         banners = bannerList.Split(vbCrLf)
                         bannerCnt = banners.Length
@@ -545,11 +545,11 @@ Namespace Contensive.Addons.SupplierDirectory
         '   crlf delimited list of all banners, image tab link tab title
         '============================================================================
         '
-        Function getVerticalBannerList(ByVal cp As CPBaseClass) As String
+        Function getVerticalBannerList(ByVal cp As CPBaseClass, common As CommonClass) As String
             '
             getVerticalBannerList = ""
             Try
-                getVerticalBannerList = cp.Cache.Read("VerticalBannerList")
+                getVerticalBannerList = common.cacheRead(cp, "VerticalBannerList")
                 If getVerticalBannerList = "" Then
                     Call setBannerLists(cp)
                     getVerticalBannerList = Global_VerticalBannerList
@@ -565,11 +565,11 @@ Namespace Contensive.Addons.SupplierDirectory
         '   crlf delimited list of all banners, image tab link tab title
         '============================================================================
         '
-        Function getHorizontalBannerList(ByVal cp As CPBaseClass) As String
+        Function getHorizontalBannerList(ByVal cp As CPBaseClass, common As CommonClass) As String
             '
             getHorizontalBannerList = ""
             Try
-                getHorizontalBannerList = cp.Cache.Read("HorizontalBannerList")
+                getHorizontalBannerList = Common.cacheRead(cp, "HorizontalBannerList")
                 If getHorizontalBannerList = "" Then
                     Call setBannerLists(cp)
                     getHorizontalBannerList = Global_HorizontalBannerList

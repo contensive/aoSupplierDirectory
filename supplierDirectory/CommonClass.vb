@@ -3,7 +3,7 @@ Imports Contensive.BaseClasses
 
 Namespace Contensive.Addons.SupplierDirectory
 
-    Friend Class CommonClass
+    Public Class CommonClass
         '
         ' Privates
         '
@@ -24,7 +24,7 @@ Namespace Contensive.Addons.SupplierDirectory
             getLayout = ""
             Try
                 cacheName = "Layout, " & LayoutName
-                getLayout = cp.Cache.Read(cacheName)
+                getLayout = cacheRead(cp, cacheName)
                 If getLayout = "" Then
                     CSLayout = cp.CSNew
                     CSLayout.Open("layouts", "name=" & cp.Db.EncodeSQLText(LayoutName))
@@ -288,6 +288,35 @@ Namespace Contensive.Addons.SupplierDirectory
             End Try
 
         End Function
-
+        '====================================================================================================
+        ''' <summary>
+        ''' Read from the cache if not admin site
+        ''' </summary>
+        ''' <param name="cp"></param>
+        ''' <param name="name"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Friend Function cacheRead(cp As CPBaseClass, name As String) As String
+            Dim returnResults As String = ""
+            If Not cp.Doc.IsAdminSite Then
+                returnResults = cp.Cache.Read(name)
+            End If
+            Return returnResults
+        End Function
+        '====================================================================================================
+        ''' <summary>
+        ''' save to the cache if not admin site
+        ''' </summary>
+        ''' <param name="cp"></param>
+        ''' <param name="name"></param>
+        ''' <param name="value"></param>
+        ''' <param name="clearOnContentList"></param>
+        ''' <remarks></remarks>
+        Friend Sub cacheSave(cp As CPBaseClass, name As String, value As String, clearOnContentList As String)
+            If Not cp.Doc.IsAdminSite Then
+                cp.Cache.Save(name, value, clearOnContentList)
+            End If
+        End Sub
+        '
     End Class
 End Namespace
