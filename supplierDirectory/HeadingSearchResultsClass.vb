@@ -329,9 +329,10 @@ Namespace Contensive.Addons.SupplierDirectory
                                         companyLine = ""
                                         If companyName <> "" Then
                                             If (weblink <> "") Then
-                                                companyName = "<a href=""" & weblink & """ target=""_blank"">" & companyName & "</a>"
+                                                companyLine = cp.Html.div("<a href=""" & weblink & """ target=""_blank"">" & companyName & "</a>", , "companyLine")
+                                            Else
+                                                companyLine = cp.Html.div(companyName, , "companyLine")
                                             End If
-                                            companyLine = cp.Html.div(companyName, , "companyLine")
                                         End If
                                         '
                                         If (web <> "") Then

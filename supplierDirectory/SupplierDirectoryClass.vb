@@ -519,7 +519,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     Call cs.Close()
                 End If
                 If copy = "" Then
-                    js &= "jQuery('#footerNav').hide();"
+                    js &= "jQuery('.footerNav').hide();"
                 Else
                     content = content.Replace("##footerNavContent##", copy)
                 End If
@@ -529,7 +529,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 ' --------------------------------------------------------------------
                 '
                 If Not String.IsNullOrEmpty(js) Then
-                    CP.Doc.AddHeadJavascript(js)
+                    CP.Doc.AddHeadJavascript("jQuery(document).ready(function(){" & js & "});")
                 End If
                 Execute = content
             Catch ex As Exception

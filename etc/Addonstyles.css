@@ -1,4 +1,5 @@
 
+
 .listingImageCaption {padding: 10px 0 0 10px; }
 .listingImage {margin: 10px 0 0 20px;}
 .listingImage img {height: 100px;; border: 1px solid #888; padding: 0}
@@ -159,8 +160,8 @@ a:hover {color:#444;text-decoration:underline;}
 .headingSearchResults .list .enhanced {padding: 10px 0; border-bottom:1px solid #e7eaea}
 .headingSearchResults .list .enhanced .left {width:140px;text-align: center;vertical-align:top;}
 .headingSearchResults .list .enhanced .left img { border: 1px solid rgb(30, 48, 44)}
-.headingSearchResults .list .enhanced .center {width: 490px; text-align: left; padding-left: 6px; vertical-align: top; }
-.headingSearchResults .list .enhanced .right {width:110px;}
+.headingSearchResults .list .enhanced .center {width: 440px; text-align: left; padding-left: 6px; vertical-align: top; }
+.headingSearchResults .list .enhanced .right {width:160px;}
 .headingSearchResults .list .enhanced .companyLine {padding:0;margin:0;font-size:14px;font-weight: bold;}
 .headingSearchResults .list .enhanced .featureLine {padding:0;margin:0;}
 .headingSearchResults .list .enhanced .profileButtonLine {font-size:14px;font-weight: bold;}
@@ -169,10 +170,10 @@ a:hover {color:#444;text-decoration:underline;}
 .headingSearchResults .list .enhanced .profileButtonLine a:hover {color:#444;text-decoration:underline;}
 .headingSearchResults .list .enhanced .descriptionLine {padding-top:6px}
 .headingSearchResults .list .normal { padding: 10px 0; border-bottom:1px solid #e7eaea }
-.headingSearchResults .list .normal .left {width: 630px; text-align: left; padding-left: 6px; vertical-align: top;}
+.headingSearchResults .list .normal .left {width: 570px; text-align: left; padding-left: 6px; vertical-align: top;}
 .headingSearchResults .list .normal .left .companyLine {padding:0;font-size:12px;font-weight: bold;}
 .headingSearchResults .list .normal .left .featureLine {}
-.headingSearchResults .list .normal .right {width:110px;}
+.headingSearchResults .list .normal .right {width:160px;}
 .headingSearchResults .pageNavigation {padding:10px 0 10px 20px;height:30px;clear:both;display:table;}
 .headingSearchResults .pageNavigation ul {list-style:none;margin:0;padding:0;}
 .headingSearchResults .pageNavigation ul li {background-color:white;margin-right:0px;line-height:28px;float:left;}
@@ -194,8 +195,8 @@ a:hover {color:#444;text-decoration:underline;}
 .textSearchResults .list .enhanced {padding: 10px 0; border-bottom:1px solid #e7eaea}
 .textSearchResults .list .enhanced .left {width:140px;text-align: center;vertical-align:top;}
 .textSearchResults .list .enhanced .left img { border: 1px solid rgb(30, 48, 44)}
-.textSearchResults .list .enhanced .center {width: 490px; text-align: left; padding-left: 6px; vertical-align: top; }
-.textSearchResults .list .enhanced .right {width:110px;}
+.textSearchResults .list .enhanced .center {width: 440px; text-align: left; padding-left: 6px; vertical-align: top; }
+.textSearchResults .list .enhanced .right {width:160px;}
 .textSearchResults .list .enhanced .companyLine {padding:0;margin:0;font-size:14px;font-weight: bold;}
 .textSearchResults .list .enhanced .featureLine {padding:0;margin:0;}
 .textSearchResults .list .enhanced .profileButtonLine {font-size:14px;font-weight: bold;}
@@ -204,10 +205,10 @@ a:hover {color:#444;text-decoration:underline;}
 .textSearchResults .list .enhanced .profileButtonLine a:hover {color:#444;text-decoration:underline;}
 .textSearchResults .list .enhanced .descriptionLine {padding-top:6px}
 .textSearchResults .list .normal {padding: 10px 0; border-bottom:1px solid #e7eaea}
-.textSearchResults .list .normal .left {width: 630px; text-align: left; padding-left: 6px; vertical-align: top;}
+.textSearchResults .list .normal .left {width: 570px; text-align: left; padding-left: 6px; vertical-align: top;}
 .textSearchResults .list .normal .left .companyLine {padding: 0;font-size:12px;font-weight: bold;}
 .textSearchResults .list .normal .left .featureLine {}
-.textSearchResults .list .normal .right {width:110px;}
+.textSearchResults .list .normal .right {width:160px;}
 .textSearchResults .pageNavigation {padding:10px 0 10px 20px;height:30px;clear:both;display:table;}
 .textSearchResults .pageNavigation ul {list-style:none;margin:0;padding:0;}
 .textSearchResults .pageNavigation ul li {background-color:white;margin-right:0px;line-height:28px;float:left;}
@@ -251,12 +252,12 @@ a:hover {color:#444;text-decoration:underline;}
 .enhanced { padding: 4px 0px; background-color: rgb(247, 250, 250); }
 .enhanded td.left {width: 140px; text-align: center;}
 .enhanded td.left img { border: 1px solid rgb(30, 48, 44)}
-.enhanced td.center { width: 490px; text-align: left; padding-left: 6px; vertical-align: top; }
+.enhanced td.center { width: 440px; text-align: left; padding-left: 6px; vertical-align: top; }
 .enhanced td.center .companyLine {}
 .enhanced td.center .addressLine {}
 .enhanced td.center .descriptionLine {}
 .enhanced td.center .webLine {}
-.enhanced td.right { width: 110px; text-align: left; padding-left: 6px; vertical-align: top; }
+.enhanced td.right { width: 160px; text-align: left; padding-left: 6px; vertical-align: top; }
 .enhanced td.right .profileButtonLine {}
 .enhanced td.right .phoneLine{}
 .enhanced td.right .faxLine{}
