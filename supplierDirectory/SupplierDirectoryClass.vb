@@ -519,7 +519,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     Call cs.Close()
                 End If
                 If copy = "" Then
-                    js &= "jQuery('#footerNavContent').hide();"
+                    js &= "jQuery('#footerNav').hide();"
                 Else
                     content = content.Replace("##footerNavContent##", copy)
                 End If
