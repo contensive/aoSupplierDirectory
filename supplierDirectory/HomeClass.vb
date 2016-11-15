@@ -24,6 +24,9 @@ Namespace Contensive.Addons.SupplierDirectory
             Dim Hint As String = ""
             Dim rowTotal As Integer = 0
             Dim cacheName As String = ""
+            Dim form As CPBlockBaseClass = cp.BlockNew()
+            Dim layout As CPBlockBaseClass = cp.BlockNew
+            Dim blockLayout As CPBlockBaseClass = cp.BlockNew
             '
             getForm = ""
             Try
@@ -131,7 +134,7 @@ Namespace Contensive.Addons.SupplierDirectory
                         Loop
                         If cellRight <> "" Then
                             cellRight = "" _
-                                & vbCrLf & vbTab & "<ul class=""categories"">" _
+                                & vbCrLf & vbTab & "<ul class=""categoriesUL"">" _
                                 & cellRight _
                                 & vbCrLf & vbTab & vbTab & vbTab & "</ul>" _
                                 & vbCrLf & vbTab & vbTab & "</li>" _
@@ -143,10 +146,19 @@ Namespace Contensive.Addons.SupplierDirectory
                     ' add wrapper
                     '
                     getForm = common.getLayout(cp, "Supplier Directory Home")
+
                     getForm = getForm.Replace("##leftColumn##", cellLeft)
                     getForm = getForm.Replace("##rightColumn##", cellRight)
                     getForm = getForm.Replace("##showcaseList##", getShowcaseAds(cp, common, rqs))
-                    '
+                    'Dim blockLayoutHtml As String = ""
+                    ''
+
+                    'layout.OpenLayout("New Supplier Directory Home")
+                    ''
+                    ''
+                    'blockLayout.Load(layout.GetInner("#js-buyerGuideSelection"))
+                    ''
+                    'layout.SetInner("#js-buyerGuideSelection", blockLayoutHtml)
                     Call cp.Cache.Save(cacheName, getForm, "Layouts,Directory Subcategories")
                 End If
             Catch ex As Exception

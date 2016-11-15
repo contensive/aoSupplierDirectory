@@ -14,6 +14,7 @@ Namespace Contensive.Addons.SupplierDirectory
             Dim cs As CPCSBaseClass
             Dim category As String = ""
             Dim categoryLast As String = ""
+            Dim categoryId As Integer
             Dim heading As String = ""
             Dim rqs As String = ""
             Dim qs As String = ""
@@ -30,13 +31,13 @@ Namespace Contensive.Addons.SupplierDirectory
             '
             getForm = ""
             Try
-                category = cp.Request.GetText(rnCategory)
-                If category <> "" Then
-                    cacheName = "Supplier Directory Subcategory List, " & category
+                categoryId = cp.Request.GetInteger(rnCategoryID)
+                If categoryId <> 0 Then
+                    cacheName = "Supplier Directory Subcategory List, " & categoryId
                     getForm = common.cacheRead(cp, cacheName)
                     If getForm = "" Then
                         cs = cp.CSNew
-                        cs.Open("Directory Subcategories", "(category=" & cp.Db.EncodeSQLText(category) & ")", "name")
+                        cs.Open("Directory Subcategories", "(categoryID=" & cp.Db.EncodeSQLText(categoryId) & ")", "name")
                         If cs.OK Then
                             '
                             ' all is valid, build page

@@ -9,7 +9,7 @@ Namespace Contensive.Addons.SupplierDirectory
         '   get Home Form
         '============================================================================
         '
-        Friend Function getForm(ByVal cp As CPBaseClass, ByVal common As CommonClass) As String
+        Friend Function returnHtml(ByVal cp As CPBaseClass, ByVal common As CommonClass) As String
             '
             Dim csShowcase As CPCSBaseClass
             Dim showcaseCaption As String = ""
@@ -68,7 +68,7 @@ Namespace Contensive.Addons.SupplierDirectory
             Dim recordCntMessage As String = ""
             Dim image As String = ""
             Dim companyName As String = ""
-            Dim ListingNormalSrc As String = ""
+            Dim detailedListingSrc As String = ""
             Dim memberCompanyCaption As String = ""
             Dim featureLine As String = ""
             Dim IsExhibitor As Boolean = False
@@ -85,7 +85,7 @@ Namespace Contensive.Addons.SupplierDirectory
             '
             cp.Site.TestPoint("ProfileClass.getForm")
             '
-            getForm = ""
+            returnHtml = ""
             Try
                 organizationID = cp.Request.GetInteger(rnOrganizationID)
                 If organizationID <> 0 Then
@@ -94,8 +94,8 @@ Namespace Contensive.Addons.SupplierDirectory
                     ' attempt cache read
                     '
                     cacheName = "Supplier Directory Profile, " & organizationID
-                    getForm = common.cacheRead(cp, cacheName)
-                    If getForm = "" Then
+                    returnHtml = common.cacheRead(cp, cacheName)
+                    If returnHtml = "" Then
                         hint = "200"
                         '
                         ' build form
@@ -120,8 +120,8 @@ Namespace Contensive.Addons.SupplierDirectory
                             '
                             ' Organization not found
                             '
-                            getForm = "<p>The organzation you requested could not be displayed. Please use the back button to return.</p>"
-                            getForm = cp.Content.GetCopy("Supplier Directory Profile Page Organzation Not Found", getForm)
+                            returnHtml = "<p>The organzation you requested could not be displayed. Please use the back button to return.</p>"
+                            returnHtml = cp.Content.GetCopy("Supplier Directory Profile Page Organzation Not Found", returnHtml)
                         Else
                             hint = "300"
                             memberCompanyCaption = cp.Site.GetProperty("Supplier Directory Member Company Caption", "Member Company")
@@ -219,7 +219,7 @@ Namespace Contensive.Addons.SupplierDirectory
                                 emailForm = common.getLayout(cp, "Supplier Directory Email Popup Form")
                                 emailForm = emailForm.Replace("##companyName##", companyName)
                                 emailLinkLine = "" _
-                                    & vbCrLf & "<a id=""supplierDirectoryEmailFormLink##organizationID##"" href=""#supplierDirectoryEmailPopup##organizationID##"">E-mail</a>" _
+                                    & vbCrLf & "<a class=""emailBtn ""id=""supplierDirectoryEmailFormLink##organizationID##"" href=""#supplierDirectoryEmailPopup##organizationID##"">E-mail</a>" _
                                     & vbCrLf & emailForm _
                                     & vbCrLf & "<script>" _
                                         & "$(document).ready(function() {" _
@@ -328,10 +328,38 @@ Namespace Contensive.Addons.SupplierDirectory
                             End If
                             '
                             ' stuff layout and save bake
+
                             '
-                            hint = "800"
-                            getForm = common.getLayout(cp, "Supplier Directory Profile")
-                            If getForm = "" Then
+                            Hint = "800"
+                            Dim form As CPBlockBaseClass = cp.BlockNew()
+                            form.OpenLayout("bgDetailedResults.html")
+                            ' returnHtml = common.getLayout(cp, "bgDetailedResults.html")
+                            Dim detailedListing As CPBlockBaseClass = cp.BlockNew()
+                            Dim webLines As String = "##webLine##"
+                         
+
+                            detailedListingSrc = form.GetOuter("#js-buyerResults2")
+                            detailedListing.Load(detailedListingSrc)
+                            detailedListing.SetInner(".bgHome", "##home##")
+                            detailedListing.SetInner(".bgOrganization", "##categoryList##")
+                            detailedListing.SetInner(".bgHeading", "##heading##")
+                            detailedListing.SetInner(".buyerResultsUL", "##list##")
+                            detailedListing.SetInner(".company", "##companyNameLine##")
+                            'bgOrganization
+                            'detailedListing.SetInner(".company", "##companyNameLine##")
+                            detailedListing.SetInner(".buy-logo-inner", "##profileImageLine##")
+                            'buy-logo-inner
+                            detailedListing.SetInner(".location", "##address1Line##")
+                            detailedListing.SetInner(".sales-phone", "Sales Phone:" & "" & "##phoneLine##")
+                            detailedListing.SetInner(".fax", "##faxLine##")
+                            detailedListing.SetInner(".description", "##profileDescriptionLine##")
+                            detailedListing.SetOuter(".emailBtn", "##emailLinkLine##")
+                            detailedListing.SetOuter(".buyerBtn", cp.Site.EncodeAppRootPath(webLines))
+                            'buyerBtn
+
+                            returnHtml = detailedListing.GetHtml()
+
+                            If returnHtml = "" Then
                                 cp.Site.TestPoint("ProfileClass.getForm, profile layout not found")
                             Else
                                 qs = rqs
@@ -342,22 +370,21 @@ Namespace Contensive.Addons.SupplierDirectory
                                 qs = cp.Utils.ModifyQueryString(qs, rnHeadingID, "", False)
                                 qs = cp.Utils.ModifyQueryString(qs, rnCategory, "", False)
                                 qs = cp.Utils.ModifyQueryString(qs, rnformId, formIdHome)
-                                getForm = getForm.Replace("##home##", "<a href=""?" & qs & """>All Categories</a>")
-                                getForm = getForm.Replace("##companyNameLine##", companyNameLine)
-                                getForm = getForm.Replace("##profileImageLine##", profileImageLine)
-                                getForm = getForm.Replace("##profileDescriptionLine##", profileDescriptionLine)
-                                getForm = getForm.Replace("##featureLine##", featureLine)
-                                getForm = getForm.Replace("##phoneLine##", phoneLine)
-                                getForm = getForm.Replace("##faxLine##", faxLine)
-                                getForm = getForm.Replace("##webLine##", faxLine)
-                                getForm = getForm.Replace("##emailLinkLine##", emailLinkLine)
-                                getForm = getForm.Replace("##address1Line##", address1Line)
-                                getForm = getForm.Replace("##address2Line##", address2Line)
-                                getForm = getForm.Replace("##address3Line##", address3Line)
-                                getForm = getForm.Replace("##emailLinkLine##", emailLinkLine)
-                                getForm = getForm.Replace("##profileContactLine##", profileContactLine)
-                                getForm = getForm.Replace("##categoryList##", categoryList)
-                                Call cp.Cache.Save(cacheName, getForm, "Organizations, Organization Subcategories, Directory Subcategories")
+                                returnHtml = returnHtml.Replace("##home##", "<a href=""?" & qs & """>All Categories</a>")
+                                returnHtml = returnHtml.Replace("##companyNameLine##", companyNameLine)
+                                returnHtml = returnHtml.Replace("##profileImageLine##", profileImageLine)
+                                returnHtml = returnHtml.Replace("##profileDescriptionLine##", profileDescriptionLine)
+                                returnHtml = returnHtml.Replace("##featureLine##", featureLine)
+                                returnHtml = returnHtml.Replace("##phoneLine##", phoneLine)
+                                returnHtml = returnHtml.Replace("##faxLine##", faxLine)
+                                returnHtml = returnHtml.Replace("##webLine##", webLine)
+                                returnHtml = returnHtml.Replace("##emailLinkLine##", emailLinkLine)
+                                returnHtml = returnHtml.Replace("##address1Line##", address1Line)
+                                returnHtml = returnHtml.Replace("##address2Line##", address2Line)
+                                returnHtml = returnHtml.Replace("##address3Line##", address3Line)
+                                returnHtml = returnHtml.Replace("##profileContactLine##", profileContactLine)
+                                returnHtml = returnHtml.Replace("##categoryList##", categoryList)
+                                Call cp.Cache.Save(cacheName, returnHtml, "Organizations, Organization Subcategories, Directory Subcategories")
                             End If
                         End If
                         Call cs.Close()
@@ -366,7 +393,7 @@ Namespace Contensive.Addons.SupplierDirectory
             Catch ex As Exception
                 Call cp.Site.ErrorReport("ProfileClass.getForm, hint=[" & hint & "],  " & ex.Message)
             End Try
-            '
+            Return returnHtml
         End Function
 
     End Class

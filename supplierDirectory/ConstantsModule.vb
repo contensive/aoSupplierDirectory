@@ -7,6 +7,8 @@ Namespace Contensive.Addons.SupplierDirectory
         Friend Const rnformId = "formId"
         Friend Const rnHeadingID = "headingID"
         Friend Const rnCategory = "category"
+        Friend Const rnCategoryID = "categoryId"
+        Friend Const rnSubcategoryID = "subcategoryId"
         Friend Const rnPageNumber = "page"
         Friend Const rnPageSize = "pagesize"
         Friend Const rnOrganizationID = "organizationid"

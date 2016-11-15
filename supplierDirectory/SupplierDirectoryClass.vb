@@ -25,7 +25,8 @@ Namespace Contensive.Addons.SupplierDirectory
             Dim AllowBannerAds As Boolean = False
             Dim copy As String = ""
             Dim searchBanner As String = ""
-            Dim home As HomeClass
+            ' Dim home As HomeClass
+            Dim home As buyerGuideHomeClass
             Dim banners() As String
             Dim bannerTopPtr As Integer
             Dim bannerBottomPtr As Integer
@@ -64,6 +65,7 @@ Namespace Contensive.Addons.SupplierDirectory
             Dim searchAdvanced As Boolean = False
             Dim mapMode = False
             Dim orgId As Integer = 0
+            Dim categoryId As Integer = 0
             Dim js As String = ""
             '
             Execute = ""
@@ -88,6 +90,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     formId = formIdHome
                 End If
                 orgId = CP.Utils.EncodeInteger(CP.Doc.Var(rnOrganizationID))
+                categoryId = CP.Utils.EncodeInteger(CP.Doc.Var(rnCategoryID))
                 '
                 ' --------------------------------------------------------------------
                 ' authenticated check (only allow public pages to non-auth)
@@ -113,10 +116,11 @@ Namespace Contensive.Addons.SupplierDirectory
                     '
                     Call CP.Doc.AddRefreshQueryString(rnformId, formId.ToString)
                     content = common.getLayout(CP, "Supplier Directory Login")
-                    content = content.Replace("##login##", CP.Utils.ExecuteAddon("Login Form"))
+                    'new Supplier Directory Home
+                    ' content = content.Replace("##login##", CP.Utils.ExecuteAddon("Login Form"))
                     qs = rqs
                     qs = CP.Utils.ModifyQueryString(qs, rnformId, formIdHome)
-                    content = content.Replace("##homeLink##", "?" & qs)
+                    'content = content.Replace("##homeLink##", "?" & qs)
                 Else
                     '
                     ' continue without login form
@@ -268,6 +272,7 @@ Namespace Contensive.Addons.SupplierDirectory
                             ' Heading Category List
                             '
                             categoryHeading = New CategoryHeadingClass
+                            'content = categoryHeading.getForm(CP, common)
                             content = categoryHeading.getForm(CP, common)
                             AllowBannerAds = True
                         Case formIdHeadingSearchREsults
@@ -282,7 +287,7 @@ Namespace Contensive.Addons.SupplierDirectory
                             ' Profile
                             '
                             profile = New ProfileClass
-                            content = profile.getForm(CP, common)
+                            content = profile.returnHtml(CP, common)
                             AllowBannerAds = True
                         Case formIdShowcaseAd
                             '
@@ -318,7 +323,7 @@ Namespace Contensive.Addons.SupplierDirectory
                     ' If no content returned, go to home page
                     '
 
-                    home = New HomeClass
+                    home = New buyerGuideHomeClass
                     content = home.getForm(CP, common)
                     AllowBannerAds = True
                 End If
@@ -328,9 +333,19 @@ Namespace Contensive.Addons.SupplierDirectory
                 ' --------------------------------------------------------------------
                 '
                 If AllowBannerAds Then
+                    Dim contentBlock As CPBlockBaseClass = CP.BlockNew()
+                    contentBlock.Load(content)
+                    contentBlock.SetInner(".sponsHBoxInner", "##bannerBottom##")
+                    contentBlock.SetInner(".sponsVBoxInner", "##bannerLeft##")
+                    contentBlock.SetInner("#spbVertical", "##bannerRight##")
+                    'contentBlock.SetInner(".sponsHBoxInner", "##bannerBottom##")
+                    'contentBlock.SetInner(".sponsHBoxInner", "##bannerBottom##")
+                    content = contentBlock.GetHtml()
+                    '
+                    ' run the old code
+                    '
                     bannerLinkPrefix = CP.Request.Protocol & CP.Site.Domain & CP.Site.FilePath
-                    bannerWrapper = common.getLayout(CP, "Supplier Directory Banner Wrapper")
-                    bannerWrapper = bannerWrapper.Replace("##content##", content)
+                    bannerWrapper = content
                     '
                     ' Horizontal Banners
                     '
@@ -398,6 +413,10 @@ Namespace Contensive.Addons.SupplierDirectory
                             End If
                         End If
                     End If
+                    '
+                    ' *****
+                    '
+                    'bannerWrapper = listingBannerAdSrc
                     bannerWrapper = bannerWrapper.Replace("##bannerTop##", bannerTop)
                     bannerWrapper = bannerWrapper.Replace("##bannerBottom##", bannerBottom)
                     '
@@ -466,26 +485,31 @@ Namespace Contensive.Addons.SupplierDirectory
                             End If
                         End If
                     End If
+                    '
+                    ' *****
+                    '
                     bannerWrapper = bannerWrapper.Replace("##bannerLeft##", bannerLeft)
+                    bannerWrapper = bannerWrapper.Replace(".sponsVBox", bannerLeft)
                     bannerWrapper = bannerWrapper.Replace("##bannerRight##", bannerRight)
-                    '
-                    ' Search form
-                    '
-                    qs = rqs
-                    qs = CP.Utils.ModifyQueryString(qs, rnformId, FormTextSearchResults)
-                    bannerWrapper = bannerWrapper.Replace("##stateSelect##", common.getStateSelect(CP, "searchLocation", "", "searchLocation"))
-                    bannerWrapper = bannerWrapper.Replace("##action##", "?" & qs)
-                    bannerWrapper = bannerWrapper.Replace("##searchText##", searchText)
-                    bannerWrapper = bannerWrapper.Replace("##searchLocation##", searchLocation)
-                    If searchPhrase Then
-                        bannerWrapper = bannerWrapper.Replace("##searchPhraseChecked##", "checked")
-                    Else
-                        bannerWrapper = bannerWrapper.Replace("##searchPhraseChecked##", "")
-                    End If
-                    bannerWrapper = bannerWrapper.Replace("##bannerLogo##", CP.Content.GetCopy("Supplier Directory Banner Logo", "<div style=""text-align:center"">supplier directory logo</div>"))
-                    If searchAdvanced Then
-                        bannerWrapper &= vbCrLf & vbTab & "<script>cj.hide('searchNormal');cj.show('searchAdvanced');</script>"
-                    End If
+                    ''
+                    '' Search form
+                    ''
+                    'qs = rqs
+                    'qs = CP.Utils.ModifyQueryString(qs, rnformId, FormTextSearchResults)
+                    'bannerWrapper = bannerWrapper.Replace("##stateSelect##", common.getStateSelect(CP, "searchLocation", "", "searchLocation"))
+                    'bannerWrapper = bannerWrapper.Replace("##action##", "?" & qs)
+                    'bannerWrapper = bannerWrapper.Replace("##searchText##", searchText)
+                    'bannerWrapper = bannerWrapper.Replace("##searchLocation##", searchLocation)
+                    'If searchPhrase Then
+                    '    bannerWrapper = bannerWrapper.Replace("##searchPhraseChecked##", "checked")
+                    'Else
+                    '    bannerWrapper = bannerWrapper.Replace("##searchPhraseChecked##", "")
+                    'End If
+                    'bannerWrapper = bannerWrapper.Replace("##bannerLogo##", CP.Content.GetCopy("Supplier Directory Banner Logo", "<div style=""text-align:center"">supplier directory logo</div>"))
+
+                    'If searchAdvanced Then
+                    '    bannerWrapper &= vbCrLf & vbTab & "<script>cj.hide('searchNormal');cj.show('searchAdvanced');</script>"
+                    'End If
                     content = bannerWrapper
                 End If
                 '

@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- jQuery library (served from Google) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+
+<title>TLPA (BUYER'S GUIDE)</title>
+
+<!-- css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" />
+<link href="css/tlpa_bstyle.css" rel="stylesheet" type="text/css" />
+
+<!-- js -->
+<script src="js/tlpa_js.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<!-- login box mask background -->
+<div id="js-tLoginMask" class="tLoginMask"></div>
+<!-- end login box mask background -->
+
+<!-- login box -->
+<div id="js-loginModal" class="fancy loginModal">
+    <div class="closeX"><a href="#" id="js-closeLoginModal" class="closeLoginModal"><img src="img/x-close.png" alt=""></a></div>
+    <h2>Member Login</h2>
+
+    <!-- login form -->
+    <div class="tLoginForm">
+        <div class="tLoginFormInner">
+            <div id="js-tLoginFormBody" class="tLoginFormBody">
+            <!-- LOGIN ERROR MESSAGE -->
+            <div id="js-loginErrorMSG" class="loginErrorMSG" style="display: none;">Invalid username and/or password.</div>
+            <!-- END LOGIN ERROR MESSAGE -->
+            <!-- PW RETRIEVAL ERROR MESSAGE -->
+            <div id="js-loginErrorMSG2" class="loginErrorMSG" style="display: none;">Please enter a valid e-mail.</div>
+            <!-- PW RETRIEVAL ERROR MESSAGE -->
+            <!-- user login -->
+            <form id="js-tlpaLoginForm" action="">
+                <div class="loginTR tlpaUser">
+                <label for="js-tlpaUN">Username</label>
+                <input type="text" id="js-tlpaUN" name="username" required>
+                </div>
+                <div class="loginTR tlpaPass">
+                <label for="js-tlpaPW">Password</label>
+                <input type="password" id="js-tlpaPW" name="password" required>
+                </div>
+                <div class="loginTR tlpaSub">
+                <input type="submit" id="js-tLoginSubmit" value="Log In">
+                </div>
+                <div class="loginTR tlpaSub">
+                <a href="#">I forgot my login information</a>
+                </div>
+            </form>
+            <!-- end user login -->
+            <!-- forgot login -->
+            <form id="js-tlpaForgotForm01" style="display: none;" action="">
+                <div class="loginTR tlpaUser">
+                <label for="js-tlpaEmail">Enter your e-mail address to have your login information sent to you:</label>
+                <input type="email" id="js-tlpaEmail" name="email" required>
+                </div>
+                <div class="loginTR tlpaSub">
+                <input type="submit" id="js-tLoginSubmitEmail" class="ctaColor ctaBtn" value="Submit">
+                </div>
+            </form>
+            <!-- end forgot login -->
+            <!-- forgot login confirm -->
+            <form id="js-tlpaForgotForm02" style="display: none;" action="">
+                <div class="loginTR tlpaUser">
+                <label>Your login information has been sent to your e-mail address.</label>
+                </div>
+                <div class="loginTR tlpaSub">
+                <input type="submit" id="js-tLoginBackBtn" value="Back">
+                </div>
+            </form>
+            <!-- end forgot login confirm -->
+            </div>
+            <div class="tLoginLogo"></div>
+        </div>
+    </div>
+    <!-- login form -->
+
+</div>
+<!-- end login box -->
+
+<!-- main wrapper -->
+<div class="oneWrapper">
+
+    <!-- header -->
+    <header class="oneHeader">
+    <div class="default-width">
+        <div class="oneHeaderInner">
+            <div class="headerLogo hCol">
+                <div class="headerLogoInner">
+                    <a href="#">
+                    <div class="theLogo hCol"><img src="img/TLPA-logo-w.png" alt="TLPA" /></div>
+                    <div class="theLogoText hCol">
+                        Taxicab,<br />
+                        Limousine &amp;<br />
+                        Paratransit<br />
+                        Association
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class="headerOptions hCol">
+                 <div class="headerOptionsInner">
+                     <div class="memberOptions hCol">
+                         <!-- header options -->
+                         <ul class="memberOptionsUL">
+                             <li class="rideLI"><a href="#"><span class="fa fa-car"></span> Find a Ride</a></li>
+                             <li class="loginLI"><a href="#" id="js-showLoginModal"><span class="fa fa-lock"></span> Member Login</a></li>
+                         </ul>
+                         <!-- end header options -->
+                     </div>
+                     <div class="tlpaSearch hCol">
+                         <div class="tlpaSearchInner">
+                             <input type="search" name="search" class="tlpaSearchInput" placeholder="Search TLPA" />
+                             <button id="js-tlpaSiteSearchBtn" class="tlpaSiteSearchBtn"><span class="fa fa-search"></span></button>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <!-- end header -->
+
+    <!-- navigation -->
+    <nav class="oneNav">
+    <div class="default-width">
+        <!-- mobile menu -->
+        <label for="show-menu" class="show-menu">
+            <div class="mobileNavIcon">
+                <span class="tlpaNavicon"><span class="fa fa-navicon"></span> <span class="montserrat">Menu</span></span>
+            </div>
+        </label>
+        <input type="checkbox" id="show-menu" class="mobileMenu" role="button">
+        <!-- end mobile menu -->
+        <div class="oneNavInner">
+        <div class="mobileBox">
+            <label for="show-menu" class="closeX show-menu"><img src="img/x-close.png" alt="Close" /></label>
+            <ul class="oneNavUL">
+                <li class="searchLI">
+                    <!-- site search -->
+                    <div class="tlpaSearch">
+                    <div class="tlpaSearchInner">
+                        <input type="search" name="search" class="tlpaSearchInput" placeholder="Search TLPA" />
+                             <button id="js-tlpaSiteSearchBtn2" class="tlpaSiteSearchBtn"><span class="fa fa-search"></span></button>
+                    </div>
+                    </div>
+                    <!-- end site search -->
+                </li>
+                <li class="active"><a href="#"><span class="hov">Home</span></a></li>
+                <li><a href="#"><span class="hov">About</span></a>
+                <ul class="oneNavUL2">
+                    <li><a href="#">TLPA History</a></li>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="#">Board of Directors</a></li>
+                    <li><a href="#">Divisions</a></li>
+                    <li><a href="#">Women in Transportation</a></li>
+                </ul>
+                </li>
+                <li><a href="#"><span class="hov">Meetings &amp; Events</span></a>
+                <ul class="oneNavUL2">
+                    <li><a href="#">Annual Meeting</a></li>
+                    <li><a href="#">Mid-Year International Leadership Conference</a></li>
+                    <li><a href="#">Calendar of Events</a></li>
+                </ul>
+                </li>
+                <li><a href="#"><span class="hov">Advocacy</span></a>
+                <ul class="oneNavUL2">
+                    <li><a href="#">Washington Watch</a></li>
+                    <li><a href="#">Write Your Congressman</a></li>
+                    <li><a href="#">Who's Driving You</a></li>
+                </ul>
+                </li>
+                <li><a href="#"><span class="hov">Members</span></a>
+                <ul class="oneNavUL2">
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">TLPA Forum</a></li>
+                    <li><a href="#">Resource Center</a></li>
+                </ul>
+                </li>
+                <li><a href="#"><span class="hov">Contact</span></a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    </nav>
+    <!-- end navigation -->
+
+    <!-- tier contents -->
+    <section class="tlpaTierSection">
+    <div class="default-width">
+        <div class="tlpaTierSectionInner">
+            <!-- full -->
+            <div class="tierFull">
+
+                <div class="contentBox"><h1>Buyer's Guide (Listings Page)</h1></div>
+
+                <p>All areas containing the advertisements can be removed from the layout or added to the layout.</p>
+
+                <!-- buyers guide -->
+                <div class="buyerGuideBox">
+                <div class="buyerGuideBoxInner">
+
+                    <!-- buyer results -->
+                    <div id="js-buyerResults" class="buyerResults">
+                    <!-- result info -->
+                    <div class="buyerGuide-results">
+                        <!-- breadcrumbs -->
+                        <div class="breadcrumbBox">
+                            <ul>
+                                <li><a href="#">Buyer's Guide</a></li>
+                                <li>Transportation Brokers/Fleet Management</li>
+                            </ul>
+                        </div>
+                        <!-- end breadcrumbs -->
+                        <div class="result-num">Displaying 3 results</div>
+                    </div>
+                    <!-- end result info -->
+                    <div class="buyerResultsInner">
+                        <!-- col left -->
+                        <!-- can remove this column if not needed -->
+                        <div class="col-left bCol">
+                            <!-- ad space (vertical) -->
+                            <div class="sponsVBox">
+                            <div class="sponsVBoxInner">
+                                <a href="#" target="_blank">
+                                    <!-- skyscraper -->
+                                    <img class="s600" src="img/ad-skyscraper.jpg" />
+                                    <!-- vertical banner -->
+                                    <img class="s240" src="img/ad-vertrectangle.jpg" />
+                                </a>
+                            </div>
+                            </div>
+                            <!-- end ad space (vertical) -->
+                        </div>
+                        <!-- end col left -->
+                        <!-- col main (results) -->
+                        <div class="col-main bCol">
+                            <ul class="buyerResultsUL">
+                                <li>
+                                    <!-- one result -->
+                                    <div class="oneBuyer">
+                                        <div class="buy-logo">
+                                            <div class="buy-logo-inner">
+                                                [logo here]
+                                            </div>
+                                            <a href="#" class="buyerBtn">Send E-mail</a>
+                                            <a href="#" target="_blank" class="buyerBtn">Website</a>
+                                        </div>
+                                        <div class="buy-details">
+                                            <div class="company">Company Name</div>
+                                            <div class="location">
+                                                Address<br />
+                                                City, State, ZIP
+                                            </div>
+                                            <div class="sales-phone">Sales Phone: (555) 555-5555</div>
+                                            <div class="fax">Fax: (555) 555-5555</div>
+                                            <div class="description"><p>Very brief description/summary about the company and the services offered that may interest the user... <a href="#">Learn More</a></p></div>
+                                        </div>
+                                    </div>
+                                    <!-- end one result -->
+                                </li>
+                                <li>
+                                    <!-- one result -->
+                                    <div class="oneBuyer">
+                                        <div class="buy-logo">
+                                            <div class="buy-logo-inner">
+                                                <img src="img/Advantage_Funding.jpg" alt="" />
+                                            </div>
+                                            <a href="#" class="buyerBtn">Send E-mail</a>
+                                            <a href="#" target="_blank" class="buyerBtn">Website</a>
+                                        </div>
+                                        <div class="buy-details">
+                                            <div class="company">Advantage Funding</div>
+                                            <div class="location">
+                                                1111 Marcus Ave., Ste. M27<br />
+                                                Lake Success, NY 11042
+                                            </div>
+                                            <div class="sales-phone">Sales Phone: (516) 280-1375</div>
+                                            <div class="fax">Fax: (516) 508-9453</div>
+                                            <div class="description"><p>We are a national leader in ground transportation finance. We understand that your unique market sometimes requires special lending... <a href="#">Learn More</a></p></div>
+                                        </div>
+                                    </div>
+                                    <!-- end one result -->
+                                </li>
+                                <li>
+                                    <!-- one result -->
+                                    <div class="oneBuyer">
+                                        <div class="buy-logo">
+                                            <div class="buy-logo-inner">
+                                                <img src="img/KFH_Group,_Inc-.jpg" alt="" />
+                                            </div>
+                                            <a href="#" class="buyerBtn">Send E-mail</a>
+                                            <a href="#" target="_blank" class="buyerBtn">Website</a>
+                                        </div>
+                                        <div class="buy-details">
+                                            <div class="company">KFH Group, Inc.</div>
+                                            <div class="location">
+                                                4920 Elm St., Ste. 350<br />
+                                                Bethesda, MD 20814
+                                            </div>
+                                            <div class="sales-phone">Sales Phone: (301) 951-8660</div>
+                                            <div class="fax">Fax: (301) 951-0026</div>
+                                            <div class="description"><p>KFH Group provides assistance to local, state, and federal agencies in the areas of public transportation planning, management consulting... <a href="#">Learn More</a></p></div>
+                                        </div>
+                                    </div>
+                                    <!-- end one result -->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end col main (results) -->
+                        <!-- col right -->
+                        <!-- can remove this column if not needed -->
+                        <div class="col-right bCol">
+                            <!-- ad space (vertical) -->
+                            <div class="sponsVBox">
+                            <div class="sponsVBoxInner">
+                                <a href="#" target="_blank">
+                                    <!-- skyscraper -->
+                                    <img class="s600" src="img/ad-skyscraper.jpg" />
+                                    <!-- vertical banner -->
+                                    <img class="s240" src="img/ad-vertrectangle.jpg" />
+                                </a>
+                            </div>
+                            </div>
+                            <!-- end ad space (vertical) -->
+                        </div>
+                        <!-- end col right -->
+                    </div>
+                    </div>
+                    <!-- end buyer results -->
+
+                    <!-- ad space (horizontal) -->
+                    <!-- can remove if not needed -->
+                    <div class="sponsHBox">
+                    <div class="sponsHBoxInner">
+                        <a href="#" target="_blank">
+                            <!-- leaderboard -->
+                            <img class="s728" src="img/ad-leaderboard.jpg" />
+                            <!-- full banner -->
+                            <img class="s468" src="img/ad-fullbanner.jpg" />
+                            <!-- half banner -->
+                            <img class="s234" src="img/ad-halfbanner.jpg" />
+                        </a>
+                    </div>
+                    </div>
+                    <!-- end ad space (horizontal) -->
+
+                </div>
+                </div>
+                <!-- end buyers guide -->
+
+            </div>
+            <!-- end full -->
+        </div>
+    </div>
+    </section>
+    <!-- end tier contents -->
+
+    <!-- subfooter -->
+    <div class="oneSubFooter">
+    <div class="default-width">
+        <div class="oneSubFooterInner">
+
+            <!-- one col (footer nav) -->
+            <div class="subCol-full oneSubFCol">
+                <h4 class="label-desktop">Site Map</h4>
+                <!-- mobile menu -->
+                <label for="show-menu-f" class="show-menu">
+                    <h4>Site Map <span class="fa fa-caret-right"></span></h4>
+                </label>
+                <input type="checkbox" id="show-menu-f" class="mobileMenu-f" role="button">
+                <!-- end mobile menu -->
+                <div class="siteMapBox">
+                <ul class="siteMapUL subfootUL">
+                    <li><a href="#">About</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">TLPA History</a></li>
+                        <li><a href="#">Staff and Board</a></li>
+                        <li><a href="#">Divisions</a></li>
+                        <li><a href="#">Women in Transportation</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Join TLPA</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">Why Join TLPA?</a></li>
+                        <li><a href="#">Benefits</a></li>
+                        <li><a href="#">Membership Types</a></li>
+                        <li><a href="#">Join Form</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Meetings &amp; Events</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">Annual Meeting</a></li>
+                        <li><a href="#">Mid-year International Leadership Conference</a></li>
+                        <li><a href="#">Calendar of Events</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Advocacy</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">Washington Watch</a></li>
+                        <li><a href="#">Write Your Congressman</a></li>
+                        <li><a href="#">Who's Driving You</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Members</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">TLPA Forum</a></li>
+                        <li><a href="#">Resource Center</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Foundation</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">Board of Directors</a></li>
+                        <li><a href="#">Donors</a></li>
+                        <li><a href="#">Activities</a></li>
+                        <li><a href="#">Donation Form</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">In The News</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">Press Releases</a></li>
+                        <li><a href="#">Operator of the Year</a></li>
+                        <li><a href="#">Community Connections</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Additional Information</a>
+                    <ul class="subfootUL2">
+                        <li><a href="#">Buyer's Guide</a></li>
+                        <li><a href="#">Find A Ride</a></li>
+                        <li><a href="#">City Pages</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <!-- end one col (footer nav) -->
+
+            <!-- one col (03) -->
+            <div class="subCol-03 oneSubFCol">
+                <h4>Contact Us</h4>
+                <table>
+                    <tr>
+                        <td><span class="fa fa-map-marker"></span></td>
+                        <td>
+                            3200 Tower Oaks Boulevard<br />
+                            Suite 220<br />
+                            Rockville, MD 20852
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="fa fa-phone"></span></td>
+                        <td>(301) 984-5700</td>
+                    </tr>
+                    <tr>
+                        <td><span class="fa fa-envelope"></span></td>
+                        <td><a href="mailto:info@tlpa.org">info@tlpa.org</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="fa fa-comment"></span></td>
+                        <td class="socialMediaTD">
+                            <ul class="socialMediaUL">
+                                <li><a href="#"><div class="fa fa-facebook"></div></a></li>
+                                <li><a href="#"><div class="fa fa-google-plus"></div></a></li>
+                                <li><a href="#"><div class="fa fa-instagram"></div></a></li>
+                                <li><a href="#"><div class="fa fa-linkedin"></div></a></li>
+                                <li><a href="#"><div class="fa fa-twitter"></div></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- end one col (03) -->
+
+        </div>
+    </div>
+    </div>
+    <!-- end subfooter -->
+
+    <!-- footer -->
+    <footer class="oneFooter">
+        <p>Copyright &copy; 2015 Taxicab, Limousine &amp; Paratransit Association. All Rights Reserved.</p>
+    </footer>
+    <!-- end footer -->
+
+    <!-- mobile sponsor -->
+    <div id="js-mobileSponFoot" class="mobileSponFoot">
+        <a href="#"><img src="img/ad-mleaderboard.jpg" alt="" /></a>
+    </div>
+    <!-- end mobile sponsor -->
+
+    <!-- back to top -->
+    <a href="#" class="back-to-top" title="Back to Top">
+    	<span class="fa fa-chevron-up"></span>
+    </a>
+    <!-- end back to top -->
+
+</div>
+<!-- end main wrapper -->
+
+</body>
+</html>

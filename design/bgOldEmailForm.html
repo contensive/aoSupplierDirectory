@@ -1,0 +1,72 @@
+    
+    <!-- tier contents -->
+    <section class="tlpaTierSection">
+    <div class="default-width">
+        <div class="tlpaTierSectionInner">
+            <!-- full -->
+            <div class="tierFull">
+                <!-- send email box -->
+                <div class="buyerGuideEmail">
+                <div class="buyerGuideEmailInner">
+<div>
+	<div class="emailForm" style="display:none;">
+	<div id="supplierDirectoryEmailPopup##organizationID##">
+		<div id="supplierDirectoryEmailSendPage##organizationID##">
+			<form id="supplierDirectoryEmailForm##organizationID##">
+				<div class="copy" id="supplierDirectoryEmailFormCopy##organizationID##">Send ##companyName## an E-mail Message</div>
+				<div class="copy" id="supplierDirectoryEmailFormSendingCopy##organizationID##" style="display:none">Sending...</div>
+				<div class="caption">Your Name</div>
+				<div class="field"><input type="text" value="" name="name"></div>
+				<div class="caption">Your E-mail</div>
+				<div class="field"><input type="text" value="" name="email"></div>
+				<div class="caption">Subject</div>
+				<div class="fieldWide"><input type="text" value="" name="subject"></div>
+				<div class="caption">Message</div>
+				<div class="field"><textarea name="message" rows="10"></textarea></div>
+				<div class="button"><input type="submit" onclick="supplierDirectorySendEmail('##organizationID##')" value="Send"></div>
+			</form>
+		</div>
+		<div id="supplierDirectoryEmailSentPage##organizationID##" style="display:none;font-weight:bold; margin: auto auto auto;">Thank you. Your e-mail has been sent.</div>
+	</div>
+</div>
+
+</div>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="js-buyerName">Your Name</label>
+                                    <input type="text" id="js-buyerName" required>
+                                </td>
+                                <td>
+                                    <label for="js-buyerEmail">E-mail Address</label>
+                                    <input type="email" id="js-buyerEmail" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <label for="js-buyerMsg">Message</label>
+                                    <textarea id="js-buyerMsg" placeholder="Enter your message here" required></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tcenter" colspan="2">
+                                    <input type="submit" value="Send">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                <!-- end send email box -->
+               
+            </div>
+            <!-- end full -->
+        </div>
+    </div>
+    </section>
+    <!-- end tier contents -->
+    
+   
+</div>
+<!-- end main wrapper -->
