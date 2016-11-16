@@ -132,7 +132,7 @@ Namespace Contensive.Addons.SupplierDirectory
                         cs = cp.CSNew
                         Dim sdSql As String = ""
                         sdSql = "select ds.name,ds.id as subId,dc.name as categoryName, ds.categoryId, dc.id from directorySubcategories ds inner Join directoryCategories dc " _
-                                     & "on ds.categoryID = dc.id where ds.id=" & subCategoryID
+                                     & "on ds.categoryID = dc.id where ds.id=" & subCategoryID & " ORDER BY dc.name desc"
                         cs.OpenSQL("", sdSql)
                         If cs.OK Then
                             headingName = cs.GetText("name")
@@ -493,8 +493,8 @@ Namespace Contensive.Addons.SupplierDirectory
                                         End If
                                         '
                                         If (web <> "") Then
-                                            webLine = cp.Html.div("<a href=""" & weblink & """ target=""_blank"">" & web & "</a>", , "webLine")
-                                            webLinkLine = cp.Html.div("<a href=""" & weblink & """ target=""_blank"">web</a>", , "webLinkLine")
+                                            webLine = cp.Html.div("<a class=""buyerBtn"" href=""" & weblink & """ target=""_blank"">website</a>", , "webLine")
+                                            webLinkLine = cp.Html.div("<a class=""buyerBtn""  href=""" & weblink & """ target=""_blank"">website</a>", , "webLinkLine")
                                         End If
                                         '
                                         '
@@ -570,11 +570,11 @@ Namespace Contensive.Addons.SupplierDirectory
                                         aliasName = Replace(aliasName, " ", "-")
                                         '
                                         If csA.Open("Link Aliases", "name=" & cp.Db.EncodeSQLText(aliasName)) Then
-                                            profileButtonLine = "<a href=""?" & qs & """>Profile</a>"
+                                            profileButtonLine = "<a href=""?" & qs & """>Learn More</a>"
                                             '& "##profileButtonLine##"
                                             'profileButtonLine = "<a href=""" & aliasName & """>Profile</a>"
                                         Else
-                                            profileButtonLine = "<a href=""?" & qs & """>Profile</a>"
+                                            profileButtonLine = "<a href=""?" & qs & """>Learn More</a>"
                                         End If
                                         csA.Close()
                                         '
