@@ -212,7 +212,7 @@ Namespace Contensive.Addons.SupplierDirectory
                             '
                             If (web <> "") Then
 
-                                webLine = cp.Html.div("<a class=""buyerBtn"" href=""" & weblink & """ target=""_blank"">website</a>", , "webLine")
+                                webLine = cp.Html.div("<a class=""buyerBtn"" href=""" & weblink & """ target=""_blank"">Website</a>", , "webLine")
                             End If
                             '
                             email = cs.GetText("directoryemail")

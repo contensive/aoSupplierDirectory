@@ -493,8 +493,8 @@ Namespace Contensive.Addons.SupplierDirectory
                                         End If
                                         '
                                         If (web <> "") Then
-                                            webLine = cp.Html.div("<a class=""buyerBtn"" href=""" & weblink & """ target=""_blank"">website</a>", , "webLine")
-                                            webLinkLine = cp.Html.div("<a class=""buyerBtn""  href=""" & weblink & """ target=""_blank"">website</a>", , "webLinkLine")
+                                            webLine = cp.Html.div("<a class=""buyerBtn"" href=""" & weblink & """ target=""_blank"">Website</a>", , "webLine")
+                                            webLinkLine = cp.Html.div("<a class=""buyerBtn""  href=""" & weblink & """ target=""_blank"">Website</a>", , "webLinkLine")
                                         End If
                                         '
                                         '
@@ -554,7 +554,7 @@ Namespace Contensive.Addons.SupplierDirectory
                                         If descriptionLine <> "" Then
                                             descriptionLine = cp.Html.div(descriptionLine, , "descriptionLine")
                                         End If
-                                        fullDescriptionLine = fullCopy
+                                        'fullDescriptionLine = fullCopy
                                         '
                                         qs = rqs
                                         qs = cp.Utils.ModifyQueryString(qs, "searchButton", "")
@@ -599,7 +599,7 @@ Namespace Contensive.Addons.SupplierDirectory
                                     cell = cell.Replace("##profileButtonLine##", profileButtonLine)
                                     cell = cell.Replace("##phoneLine##", phoneLine)
                                     cell = cell.Replace("##faxLine##", faxLine)
-                                    cell = cell.Replace("##webLine##", webLine)
+                                    ' cell = cell.Replace("##webLine##", webLine)
                                     'cell = cell.Replace("##webLinkLine##", webLinkLine)
                                     cell = cell.Replace("##emailLinkLine##", emailBody)
                                     cell = cell.Replace("##contactLine##", contactLine)

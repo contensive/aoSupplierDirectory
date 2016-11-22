@@ -2316,7 +2316,7 @@ display:none;
 			<field name="Active">True</field>
 			<field name="SortOrder"></field>
 		</record>
-		<record content="layouts" guid="{162550BF-5D64-47CB-A22E-CC522A83B005}" name="BuyersGuide Listings">
+		<record content="layouts" guid="{162550BF-5D64-47CB-A22E-CC522A83B005}" name="BuyersGuideNormalListings.html">
 			<field name="Layout"><![CDATA[<li class="normalList">
                                     <!-- one NORMAL result -->
                                     <div class="oneBuyer">
@@ -2342,7 +2342,7 @@ display:none;
 			<field name="Active">True</field>
 			<field name="SortOrder"></field>
 		</record>
-		<record content="layouts" guid="{4740F9C1-687C-40F1-9371-754D9899FCCC}" name="BuyersGuide Listings Enhanced">
+		<record content="layouts" guid="{4740F9C1-687C-40F1-9371-754D9899FCCC}" name="BuyersGuideListingsEnhanced.html">
 			<field name="Layout"><![CDATA[    <div class="buyerResultsInner">
                         <!-- can add left column and right column from previous layout if needed -->
                         <!-- col main (results) -->
@@ -2386,9 +2386,6 @@ display:none;
 		<record content="layouts" guid="{3751BFC5-3F16-4B3B-B081-E0E5BE5A949B}" name="bgSearchResultsPage.html">
 			<field name="Layout"><![CDATA[<!-- main wrapper -->
 <div class="">
-
-
-
     <!-- tier contents -->
     <section class="tlpaTierSection">
     <div class="default-width">
@@ -2446,8 +2443,8 @@ display:none;
                                                  <a href="#" class="emailBtn">Send E-mail</a>
                                             </div>
                                             <!--<a class="emailBtn" href="#" >Send E-mail</a>-->
-											<div class="buyerBtn">
-                                                <a href="#" target="_blank" >Website</a>
+					<div class="buyerBtn">
+                                                <a class="buyerBtn" href="#" target="_blank" >Website</a>
                                             </div>
                                             <!--<a class="buyerBtn" href="#" target="_blank" >Website</a>-->
                                         </div>
@@ -2676,13 +2673,20 @@ display:none;
 								<div class="col-main bCol">
 									<!-- one result -->
 									<div class="oneBuyer">
-										<div class="buy-logo">
-											<div class="buy-logo-inner">
-												<img src="img/Advantage_Funding.jpg" alt="" />
-											</div>
-											<a href="#" class="buyerBtn">Send E-mail</a>
-											<a href="#" target="_blank" class="buyerBtn">Website</a>
-										</div>
+                             <div class="buy-logo">
+                                            <div class="buy-logo-inner">
+                                                [logo here]
+                                            </div>
+											<div class="emailBtn">
+                                                 <a href="#" class="emailBtn">Send E-mail</a>
+                                            </div>
+                                            <!--<a class="emailBtn" href="#" >Send E-mail</a>-->
+											<div class="buyerBtn">
+                                                <a href="#" target="_blank" >Website</a>
+                                            </div>
+                                            <!--<a class="buyerBtn" href="#" target="_blank" >Website</a>-->
+                                        </div>
+										
 										<div class="buy-details">
 											<div class="company">Advantage Funding</div>
 											<div class="location">
