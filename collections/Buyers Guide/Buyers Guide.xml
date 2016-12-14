@@ -6,7 +6,7 @@
 		<Copy></Copy>
 		<CopyText></CopyText>
 		<ActiveXProgramID></ActiveXProgramID>
-		<DotNetClass><![CDATA[Contensive.Addons.SupplierDirectory.buyerGuideHome]]></DotNetClass>
+		<DotNetClass><![CDATA[Contensive.Addons.SupplierDirectory.SupplierDirectoryClass]]></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
 		<Filter>No</Filter>
@@ -16,9 +16,9 @@
 		<InIframe>No</InIframe>
 		<BlockEditTools>No</BlockEditTools>
 		<FormXML></FormXML>
+		<IncludeAddon name="BuyersGuidejs" guid="{4F1D5858-7345-40A3-819D-D17C35E96802}"/>
 		<IncludeAddon name="Fancy Box" guid="{24C2DBCF-3D84-44B6-A5F7-C2DE7EFCCE3D}"/>
 		<IncludeAddon name="jQuery Corners" guid="{7EBCAE49-027E-4D7D-A3CA-300D6630012C}"/>
-		<IncludeAddon name="BuyersGuidejs" guid="{4F1D5858-7345-40A3-819D-D17C35E96802}"/>
 		<IncludeAddon name="JQuery" guid="{9C882078-0DAC-48E3-AD4B-CF2AA230DF80}"/>
 		<IncludeAddon name="JQuery UI" guid="{840B9AEF-9470-4599-BD47-7EC0C9298614}"/>
 		<IsInline>No</IsInline>
@@ -58,7 +58,9 @@ function supplierDirectorySendEmail( organizationID ) {
 		<ProcessInterval>0</ProcessInterval>
 		<PageTitle></PageTitle>
 		<RemoteAssetLink></RemoteAssetLink>
-		<Styles></Styles>
+		<Styles><![CDATA[.longDescription{
+display:none;
+}]]></Styles>
 		<Scripting Language="" EntryPoint="" Timeout="5000"/>
 		<IncludeSharedStyle name="Buyers Guide Styles" guid="{84D58800-E5E2-4692-BBC9-613C2ED12CA3}"/>
 	</Addon>
@@ -158,8 +160,8 @@ end function]]></Code>
 			<siteproperty name=""></siteproperty>
 		</tab>
 </form>]]></FormXML>
-		<IncludeAddon name="\css\tlpa_bstyle.css" guid="{3113AB4B-8A8D-44CE-B4E7-6255240C63E9}"/>
 		<IncludeAddon name="BuyersGuidejs" guid="{4F1D5858-7345-40A3-819D-D17C35E96802}"/>
+		<IncludeAddon name="\css\tlpa_bstyle.css" guid="{3113AB4B-8A8D-44CE-B4E7-6255240C63E9}"/>
 		<IsInline>No</IsInline>
 		<JavascriptOnLoad></JavascriptOnLoad>
 		<JavascriptInHead></JavascriptInHead>
@@ -481,85 +483,6 @@ jQuery(document).ready(function() {
 		<Styles></Styles>
 		<Scripting Language="" EntryPoint="" Timeout="5000"/>
 	</Addon>
-	<Addon name="Old Supplier Directory" guid="{5B3FEA86-D4A3-4F46-82A6-222E240A198A}" type="Add-on">
-		<Copy></Copy>
-		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
-		<DotNetClass><![CDATA[Contensive.Addons.SupplierDirectory.SupplierDirectoryClass]]></DotNetClass>
-		<ArgumentList></ArgumentList>
-		<AsAjax>No</AsAjax>
-		<Filter>No</Filter>
-		<Help><![CDATA[<p>This add-on is a self contained system for selling banner ads and priority placements within the Supplier directory categories.&nbsp; To use this function create a page that will "house" the add-on and simply drop it on the content page.&nbsp; The various settings for categories and placement records can be found in the admin area under manage add-ons supplier directory in the following buckets.</p><p>Directory Banner Ads (ca) - These are the banner ad records that will display in the directory<br>Directory Placements (ca) - These are the organizational placements records that place companies within categories and priority placements<br>Directory Showcase Ads (ca)- These are the Shocase ads that appear on the site within the product showcase<br>Directory Subcategories (ca) - these are the category and sub category records where you can edit/add/delete<br>Organization Subcategories (ca) - These are the records that tie organizations to placement categories/sub-categories</p>]]></Help>
-		<HelpLink></HelpLink>
-		<Icon Link="" width="0" height="0" sprites="0" />
-		<InIframe>No</InIframe>
-		<BlockEditTools>No</BlockEditTools>
-		<FormXML></FormXML>
-		<IncludeAddon name="\css\tlpa_bstyle.css" guid="{3113AB4B-8A8D-44CE-B4E7-6255240C63E9}"/>
-		<IncludeAddon name="BuyersGuidejs" guid="{4F1D5858-7345-40A3-819D-D17C35E96802}"/>
-		<IncludeAddon name="JQuery" guid="{9C882078-0DAC-48E3-AD4B-CF2AA230DF80}"/>
-		<IncludeAddon name="jQuery Corners" guid="{7EBCAE49-027E-4D7D-A3CA-300D6630012C}"/>
-		<IncludeAddon name="Fancy Box" guid="{24C2DBCF-3D84-44B6-A5F7-C2DE7EFCCE3D}"/>
-		<IsInline>No</IsInline>
-		<JavascriptOnLoad></JavascriptOnLoad>
-		<JavascriptInHead><![CDATA[jQuery(document).ready(function(event){    
-    $('.bgLearnMore').click(function(event){ 
-    $(".description").hide();
-    $(".longDescription").show();
-    //event.preventDefault();
-    });
-	   
-});
-
-
-	function supplierDirectorySendEmail( organizationID ) {
-		document.getElementById('supplierDirectoryEmailFormCopy'+organizationID).style.display='none';
-		document.getElementById('supplierDirectoryEmailFormSendingCopy'+organizationID).style.display='block';
-		cj.ajax.addon(
-			'supplierDirectoryPopupEmailer'
-			,'organizationID='+organizationID 
-			,'supplierDirectoryEmailForm'+organizationID
-			,''
-			,'supplierDirectoryEmailSendPage'+organizationID
-			,'supplierDirectoryEmailSentPage'+organizationID
-		);
-		getElementById('supplierDirectoryEmailForm'+organizationID).style.display='none';
-		return false;
-	}
-
-]]></JavascriptInHead>
-		<JavascriptBodyEnd><![CDATA[jQuery(document).ready(function(){
-    $('.searchCell').corner('Top','5px');
-    $('.searchCell').corner('bottom','5px');
-	 
-});]]></JavascriptBodyEnd>
-		<MetaDescription></MetaDescription>
-		<OtherHeadTags></OtherHeadTags>
-		<Content>Yes</Content>
-		<Template>Yes</Template>
-		<Email>No</Email>
-		<Admin>Yes</Admin>
-		<OnPageEndEvent>No</OnPageEndEvent>
-		<OnPageStartEvent>No</OnPageStartEvent>
-		<OnBodyStart>No</OnBodyStart>
-		<OnBodyEnd>No</OnBodyEnd>
-		<RemoteMethod>No</RemoteMethod>
-		<ProcessRunOnce>No</ProcessRunOnce>
-		<ProcessInterval>0</ProcessInterval>
-		<PageTitle></PageTitle>
-		<RemoteAssetLink></RemoteAssetLink>
-		<Styles><![CDATA[.longDescription{
-display:none;
-}
-#fancybox-wrap{
-width:660px !important;
-height:500px !important;
-}
-.BGform{
-display:none;
-}]]></Styles>
-		<Scripting Language="" EntryPoint="" Timeout="5000"/>
-	</Addon>
 	<Addon name="\css\tlpa_bstyle.css" guid="{3113AB4B-8A8D-44CE-B4E7-6255240C63E9}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
@@ -807,7 +730,15 @@ display:none;
 		<ProcessInterval>0</ProcessInterval>
 		<PageTitle></PageTitle>
 		<RemoteAssetLink></RemoteAssetLink>
-		<Styles><![CDATA[#fancybox-wrap{
+		<Styles><![CDATA[
+#fancybox-wrap{
+width:660px !important;
+height:450px !important;
+}
+.BGform{
+display:none;
+}
+#fancybox-wrap{
 width:660px !important;
 height:450px !important;
 }
@@ -3961,6 +3892,7 @@ ul.findRideResultsUL > li:hover { background: #fbfbfb; }
 .searchBuyerGuide h1,
 .searchBuyerGuide h2,
 .searchBuyerGuide h3 { margin-bottom: 1em; text-align: center; }
+.guideSelection {text-align:center;}
 .guideSelection h4 { background: #000000; color: inherit; min-height: 50px; padding: 0.25em; }
 label.show-cmenu { display: inline-block; text-align: center; width: 100%; }
 .searchBuyerGuide .searchBtn { display: block; margin-left: auto; margin-right: auto; }
@@ -3968,7 +3900,7 @@ label.show-cmenu { display: inline-block; text-align: center; width: 100%; }
 ul.categoryUL { display: inline-block; }
 ul.categoryUL,
 ul.categoryUL2 { list-style: none; margin: 0; padding: 0; }
-ul.categoryUL > li { display: inline-block; margin-bottom: 0.5em; margin-right: 0.9%; vertical-align: top; width: 24%; }
+ul.categoryUL > li { display: inline-block; margin-bottom: 0.5em; margin-right: .2%; margin-left: .2%; vertical-align: top; width: 32%; }
 ul.categoryUL > li:last-child { margin-right: 0; }
 ul.categoryUL2 > li { margin-bottom: 0.5em; text-align: left; }
 ul.categoryUL2 a { color: inherit; }
@@ -3979,8 +3911,8 @@ input.mobileMenu-c[type="checkbox"]:checked ~ .subCatBox,
 input.mobileMenu-c[type="checkbox"]:checked ~ div .subCatBox,
 input.mobileMenu-c[type="checkbox"]:checked ~ div div .subCatBox { display: block; }
 .mobileNavIcon { display: inline-block; vertical-align: middle; padding: 0.5em; font-size: 1.5em; }
-@media screen and (max-width: 980px) {
-    ul.categoryUL > li { width: 32%; }
+@media screen and (max-width: 990px) {
+    ul.categoryUL > li { width: 48%; } /*32%*/
 }
 @media screen and (max-width: 800px) {
     .guideSelection { text-align: center; }
@@ -4376,7 +4308,23 @@ table.donateCheck input { width: 100%; }
     .toggleBtns input.toggle-checkbox:checked + label:active,
     .toggleBtns input.toggle-radio:checked + label,
     .toggleBtns input.toggle-radio:checked + label:active { border: 1px solid; }
-}]]></SharedStyle>
+}
+.longDescription{
+display:none;
+}
+.emailBtn{
+    background: #00a0d2;
+    color: #ffffff;
+    display: block;
+    font-weight: 700;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    width: 110px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+]]></SharedStyle>
 	<SharedStyle Name="tlpa_bstyle.css" guid="{59927C41-A8D8-4A6D-830C-27102708E1C2}" alwaysInclude="False" prefix="" suffix="" sortOrder=""><![CDATA[@charset "utf-8";
 /* REMOVE HTTP ONCE IT'S ON THE SERVER */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Raleway:400,700|Quicksand:400,700);
