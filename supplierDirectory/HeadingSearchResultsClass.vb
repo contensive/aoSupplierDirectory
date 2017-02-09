@@ -447,7 +447,7 @@ Namespace Contensive.Addons.SupplierDirectory
                                     End If
                                     copy = cs.GetText("directorycity")
                                     If copy <> "" Then
-                                        addressLine &= ", " & copy.Replace(" ", "&nbsp;")
+                                        addressLine &= ",&nbsp;" & copy.Replace(" ", "&nbsp;")
                                     End If
                                     copy = cs.GetText("directorystate")
                                     If copy <> "" Then
