@@ -80,6 +80,7 @@
     <Compile Include="buyerGuideHome.vb" />
     <Compile Include="CategoryHeadingClass.vb" />
     <Compile Include="BannerEdit.vb" />
+    <Compile Include="contentEditHandlerClass.vb" />
     <Compile Include="EmailNotificationClass.vb" />
     <Compile Include="housekeepClass.vb" />
     <Compile Include="ShowcaseEdit.vb" />

@@ -564,6 +564,8 @@ Namespace Contensive.Addons.SupplierDirectory
                                         qs = cp.Utils.ModifyQueryString(qs, rnformId, formIdProfile)
                                         qs = cp.Utils.ModifyQueryString(qs, rnOrganizationID, cs.GetInteger("id"))
                                         '
+                                        Dim linkAlias As String = cp.Content.GetLinkAliasByPageID(cp.Doc.PageId, qs, "")
+                                        '
                                         aliasName = aliasPrefix & "/" & cs.GetText("name")
                                         aliasName = Replace(aliasName, "'", "-")
                                         aliasName = Replace(aliasName, """", "-")
