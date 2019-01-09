@@ -89,8 +89,8 @@ Namespace Contensive.Addons.SupplierDirectory
                 If formId = 0 Then
                     formId = formIdHome
                 End If
-                orgId = CP.Utils.EncodeInteger(CP.Doc.Var(rnOrganizationID))
-                categoryId = CP.Utils.EncodeInteger(CP.Doc.Var(rnCategoryID))
+                orgId = CP.Utils.EncodeInteger(cp.doc.getText(rnOrganizationID))
+                categoryId = CP.Utils.EncodeInteger(cp.doc.getText(rnCategoryID))
                 '
                 ' --------------------------------------------------------------------
                 ' authenticated check (only allow public pages to non-auth)

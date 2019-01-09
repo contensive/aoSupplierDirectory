@@ -16,7 +16,7 @@ Namespace Contensive.Addons.SupplierDirectory
             '
             processForm = formIdBannerEdit
             Try
-                Select Case cp.Doc.Var("button")
+                Select Case cp.Doc.GetText("button")
                     Case buttonSave
                         actionSave = True
                         processForm = formIdBannerEdit
@@ -29,7 +29,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 End Select
                 '
                 If actionSave Then
-                    Call cs.Open("Directory Banner Ads", "id=" & cp.Doc.Var(rnBannerAdID))
+                    Call cs.Open("Directory Banner Ads", "id=" & cp.Doc.GetText(rnBannerAdID))
                     If cs.OK Then
                         Call cs.SetFormInput("name")
                         Call cs.SetFormInput("approvedByAccount")
@@ -78,7 +78,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 '
                 ' Populate the replacement fields
                 '
-                bannerAdId = cp.Utils.EncodeInteger(cp.Doc.Var(rnBannerAdID))
+                bannerAdId = cp.Utils.EncodeInteger(cp.Doc.GetText(rnBannerAdID))
                 content = content.Replace("##bannerAdId##", bannerAdId)
                 Call cs.Open("directory banner ads", "id=" & bannerAdId.ToString)
                 content = content.Replace("##name##", common.getHtmlInputText(cp, cs, "name"))

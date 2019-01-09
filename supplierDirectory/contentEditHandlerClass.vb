@@ -68,7 +68,7 @@ Namespace addonCollectionName
                     aliasName = Replace(aliasName, "?", "-")
                     aliasName = Replace(aliasName, "+", "-")
                     aliasName = Replace(aliasName, ",", "-")
-                    aliasName = cp.Site.addLinkAlias(aliasName, pageID, qs)
+                    cp.Site.addLinkAlias(aliasName, pageID)
                     '
                     Call csA.Open("Link Aliases", "name=" & cp.Db.EncodeSQLText(aliasName))
                     If Not csA.OK() Then

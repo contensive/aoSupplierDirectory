@@ -16,7 +16,7 @@ Namespace Contensive.Addons.SupplierDirectory
             '
             processForm = formIdShowcaseEdit
             Try
-                Select Case cp.Doc.Var("button")
+                Select Case cp.doc.getText("button")
                     Case buttonSave
                         actionSave = True
                         processForm = formIdShowcaseEdit
@@ -29,7 +29,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 End Select
                 '
                 If actionSave Then
-                    Call cs.Open("Directory Showcase Ads", "id=" & cp.Doc.Var(rnShowcaseAdID))
+                    Call cs.Open("Directory Showcase Ads", "id=" & cp.doc.getText(rnShowcaseAdID))
                     If cs.OK Then
                         Call cs.SetFormInput("name")
                         Call cs.SetFormInput("approvedByAccount")
@@ -77,7 +77,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 '
                 ' Populate the replacement fields
                 '
-                Id = cp.Utils.EncodeInteger(cp.Doc.Var(rnShowcaseAdID))
+                Id = cp.Utils.EncodeInteger(cp.doc.getText(rnShowcaseAdID))
                 Call cs.Open("directory Showcase ads", "id=" & Id.ToString)
                 content = content.Replace("##showcaseAdId##", Id.ToString)
                 content = content.Replace("##name##", common.getHtmlInputText(cp, cs, "name"))

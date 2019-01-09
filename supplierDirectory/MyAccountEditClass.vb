@@ -25,7 +25,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 '
                 If True Then
                     processForm = formIdMyAccountEdit
-                    Select Case cp.Doc.Var("button")
+                    Select Case cp.doc.getText("button")
                         Case buttonSave
                             actionSave = True
                             processForm = formIdMyAccountEdit
@@ -139,7 +139,7 @@ Namespace Contensive.Addons.SupplierDirectory
                 ' populate the organization info
                 '
                 cp.Site.TestPoint("MyAccountEditClass.getForm, 100")
-                OrganizationId = cp.Doc.Var(rnOrganizationID)
+                OrganizationId = cp.doc.getText(rnOrganizationID)
 
                 Call cs.Open("organizations", "(id=" & OrganizationId & ")and(directoryaccountcontactid=" & cp.Db.EncodeSQLNumber(cp.User.Id) & ")")
                 If Not cs.OK Then

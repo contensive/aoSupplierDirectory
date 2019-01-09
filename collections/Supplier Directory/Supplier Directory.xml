@@ -17,7 +17,6 @@
 		<BlockEditTools>No</BlockEditTools>
 		<FormXML></FormXML>
 		<IncludeAddon name="Fancy Box" guid="{24C2DBCF-3D84-44B6-A5F7-C2DE7EFCCE3D}"/>
-		<IncludeAddon name="jQuery Corners" guid="{7EBCAE49-027E-4D7D-A3CA-300D6630012C}"/>
 		<IsInline>No</IsInline>
 		<JavascriptOnLoad></JavascriptOnLoad>
 		<JavascriptInHead><![CDATA[$(document).ready(function(){
@@ -1631,7 +1630,6 @@ end function]]></Code>
 			<HelpDefault>See Send Review Request Email for details</HelpDefault>
 		</Field>
 	</CDef>
-	<ImportCollection name="jQuery Corners">{8DA686DD-8732-4077-9B8E-CA8C5AFCD312}</ImportCollection>
 	<Resource name="membericon.gif" type="www" path="supplierdirectoryfiles" />
 	<Resource name="search_off.jpg" type="www" path="supplierdirectory" />
 	<Resource name="search_on.jpg" type="www" path="supplierdirectory" />
